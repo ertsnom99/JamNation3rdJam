@@ -53,7 +53,14 @@ public class InitialLaunch : MonoBehaviour
 
         // Hide firework launcher
         GetComponent<Renderer>().enabled = false;
-        GetComponentInChildren<ParticleSystem>().Stop();
+
+        ParticleSystem[] particleSystems = GetComponentsInChildren<ParticleSystem>();
+
+        foreach(ParticleSystem particleSystem in particleSystems)
+        {
+            particleSystem.Stop();
+        }
+
         enabled = false;
     }
 

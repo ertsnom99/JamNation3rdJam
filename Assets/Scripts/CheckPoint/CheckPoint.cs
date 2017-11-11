@@ -31,6 +31,7 @@ public class CheckPoint : MonoBehaviour
     {
         GetComponent<SphereCollider>().enabled = false;
 
+        Debug.Log("activate");
         //TODO do a particule effect
     }
 }

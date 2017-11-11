@@ -1,6 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+[RequireComponent(typeof(Rigidbody))]
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        m_rigidbody.velocity = m_currentDirection * m_currentSpeed;
+        m_rigidbody.velocity = m_initialDirection * m_currentSpeed;
     }
 
     // Update is called once per frame

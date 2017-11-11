@@ -62,6 +62,7 @@ public class InitialLaunch : MonoBehaviour
         foreach (var player in m_players)
         {
             player.SetActive(true);
+            player.GetComponent<PlayerMovement>().enabled = true;
         }
 
         // Hide firework launcher

@@ -13,7 +13,7 @@ public class PathCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == GameManager.PLAYER_TAG && other.gameObject == parentPathScript.FollowingPlayer)
+        if (other.gameObject == parentPathScript.FollowingPlayer)
         {
             parentPathScript.NotifyColliderEntered();
         }
@@ -21,7 +21,7 @@ public class PathCollider : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == GameManager.PLAYER_TAG && other.gameObject == parentPathScript.FollowingPlayer)
+        if (other.gameObject == parentPathScript.FollowingPlayer)
         {
             parentPathScript.NotifyColliderExited();
         }

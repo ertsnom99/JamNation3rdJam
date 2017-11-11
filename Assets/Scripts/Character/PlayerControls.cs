@@ -70,7 +70,7 @@ public class PlayerControls : MonoBehaviour
     {
         if ((bool)inputs["submitInput"]) checkPointActivatorScript.ActivateCheckPoint();
     }
-
+    
     private void TestInputs(Hashtable inputs)
     {
         Debug.Log("verticalInput: " + (float)inputs["verticalInput"]);

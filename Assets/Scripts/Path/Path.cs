@@ -12,6 +12,7 @@ public class Path : MonoBehaviour
     }
 
     public GameObject FollowingPlayer { get; private set; }
+    private PlayerMovement followingPlayerMovement;
 
     private ParticleSystem[] followingPlayerParticleSystems;
     private int ColliderInCount = 0;
@@ -32,6 +33,7 @@ public class Path : MonoBehaviour
     public void SetFollowingPlayer(GameObject followingPlayer)
     {
         FollowingPlayer = followingPlayer;
+        followingPlayerMovement = followingPlayer.GetComponent<PlayerMovement>();
     }
 
     public void NotifyColliderEntered()
@@ -42,6 +44,7 @@ public class Path : MonoBehaviour
             foreach (ParticleSystem followingPlayerParticleSystem in followingPlayerParticleSystems)
             {
                 followingPlayerParticleSystem.Play();
+                followingPlayerMovement.SetIsFollowingCurve(true);
             }
         }
 
@@ -58,6 +61,7 @@ public class Path : MonoBehaviour
             foreach (ParticleSystem followingPlayerParticleSystem in followingPlayerParticleSystems)
             {
                 followingPlayerParticleSystem.Stop();
+                followingPlayerMovement.SetIsFollowingCurve(false);
             }
         }
     }

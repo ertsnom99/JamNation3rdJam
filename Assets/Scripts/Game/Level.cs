@@ -15,6 +15,7 @@ public class Level : MonoBehaviour
         for (int i = 0; i < paths.Length; i++)
         {
             paths[i].SetFollowingPlayer(GameManager.Instance.Players[i]);
+            GameManager.Instance.Players[i].GetComponent<PlayerMovement>().ResetNotFollowingCurveDistance();
         }
 
         GameManager.Instance.InitialLaunch.enabled = true;
@@ -33,7 +34,14 @@ public class Level : MonoBehaviour
 
     private void EndLevel()
     {
-        Debug.Log("The level ended");
-        // Check if anyplayer falled to reproduce the curve
+        // Tell all player to stop moving and check if anyplayer falled to reproduce the curve
+        for (int i = 0; i < GameManager.Instance.Players.Length; i++)
+        {
+            PlayerMovement playerMovement = GameManager.Instance.Players[i].GetComponent<PlayerMovement>();
+
+            playerMovement.SaveCurrentNotFollowingCurveDistance();
+
+            Debug.Log(GameManager.Instance.Players[i].name  + ": " + playerMovement.NotFollowingCurveMaxDistance);
+        }
     }
 }

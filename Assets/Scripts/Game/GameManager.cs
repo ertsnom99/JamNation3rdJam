@@ -10,11 +10,22 @@ public class GameManager : MonoSingleton<GameManager>
     public const string PARTICLE_TRAIL_TAG = "ParticleTrail";
     public const string CHECK_POINT_TAG = "CheckPoint";
 
-    /*[SerializeField]
-    private InitialLauncher initialLauncher;*/
+    [SerializeField]
+    private GameObject[] players;
+    [SerializeField]
+    private Path[] paths;
+
+    [SerializeField]
+    private InitialLaunch initialLaunch;
 
     private void Start()
     {
-        //initialLauncher.enabled = true;
+        // Associate each playe rto it<s path
+        for (int i = 0; i < paths.Length; i++)
+        {
+            paths[i].SetFollowingPlayer(players[i]);
+        }
+
+        initialLaunch.enabled = true;
     }
 }

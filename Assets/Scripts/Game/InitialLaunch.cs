@@ -9,7 +9,6 @@ public class InitialLaunch : MonoBehaviour
     public float m_timeToExplode;
     public Vector3 m_positionToExplode;
     public List<GameObject> m_players = new List<GameObject>();
-    public GameObject m_firework;
 
     private Rigidbody m_rigidbody;
 
@@ -53,10 +52,9 @@ public class InitialLaunch : MonoBehaviour
         }
 
         // Hide firework launcher
-        m_firework.SetActive(false);
-
-        // Disable script
-        this.enabled = false;
+        GetComponent<Renderer>().enabled = false;
+        GetComponentInChildren<ParticleSystem>().Stop();
+        enabled = false;
     }
 
     private bool IsPositionsNear(Vector3 p1, Vector3 p2, float threshold)

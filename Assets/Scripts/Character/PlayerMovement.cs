@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     /// Display a debug message with the given vector
     /// </summary>
     /// <param name="vec"></param>
-    private void DebugVector(Vector3 vec)
+    public static void DebugVector(Vector3 vec)
     {
         Debug.Log(string.Format("{0}, {1}, {2}", vec.x, vec.y, vec.z));
     }
@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
     /// Display a debug message with the given vector
     /// </summary>
     /// <param name="vec"></param>
-    private void DebugVector(Vector2 vec)
+    public static void DebugVector(Vector2 vec)
     {
         Debug.Log(string.Format("{0}, {1}", vec.x, vec.y));
     }

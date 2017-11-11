@@ -67,7 +67,10 @@ public class PlayerControls : MonoBehaviour
 
     private void UpdateMovement(Hashtable inputs)
     {
-        movementScript.UpdateMovement(inputs);
+        if(movementScript.enabled)
+        {
+            movementScript.UpdateMovement(inputs);
+        }
     }
 
     private void UpdateCheckPointActivation(Hashtable inputs)

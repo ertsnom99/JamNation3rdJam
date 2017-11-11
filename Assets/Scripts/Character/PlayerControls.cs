@@ -7,7 +7,7 @@ using System.Collections;
 public class PlayerControls : MonoBehaviour
 {
     private PlayerMovement movementScript;
-    private PlayerCheckPoint playerCheckPointScript;
+    private CheckPointActivator checkPointActivatorScript;
 
     [SerializeField]
     private string usedJoystickName = "";
@@ -21,7 +21,7 @@ public class PlayerControls : MonoBehaviour
     private void Awake()
     {
         movementScript = GetComponent<PlayerMovement>();
-        playerCheckPointScript = GetComponent<PlayerCheckPoint>();
+        checkPointActivatorScript = GetComponent<CheckPointActivator>();
     }
 
     private void Update()
@@ -68,7 +68,7 @@ public class PlayerControls : MonoBehaviour
 
     private void UpdateCheckPointActivation(Hashtable inputs)
     {
-        if ((bool)inputs["submitInput"]) playerCheckPointScript.ActivateCheckPoint();
+        if ((bool)inputs["submitInput"]) checkPointActivatorScript.ActivateCheckPoint();
     }
 
     private void TestInputs(Hashtable inputs)

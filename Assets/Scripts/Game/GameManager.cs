@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class GameManager : MonoSingleton<GameManager>
+﻿public class GameManager : MonoSingleton<GameManager>
 {
+    public enum Colors { Blue, Green, Red, Yellow };
+
     // Tags
     public const string PLAYER_TAG = "Player";
     public const string PATH_COLLIDER_TAG = "PathCollider";

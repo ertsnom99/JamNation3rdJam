@@ -1,14 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Path : MonoBehaviour
 {
+    [SerializeField]
+    private GameManager.Colors checkPointColor;
+    public GameManager.Colors CheckPointColor
+    {
+        get { return checkPointColor; }
+        set { checkPointColor = value; }
+    }
+
     public GameObject FollowingPlayer { get; private set; }
 
     private ParticleSystem[] followingPlayerParticleSystems;
     private int ColliderInCount = 0;
-
+    
     private void Start()
     {
         ParticleSystem[] particleSystems = FollowingPlayer.GetComponentsInChildren<ParticleSystem>();

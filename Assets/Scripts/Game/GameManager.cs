@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+public class GameManager : MonoSingleton<GameManager>
+{
+    // Tags
+    public const string PLAYER_TAG = "Player";
+    public const string PATH_COLLIDER_TAG = "PathCollider";
+    public const string CHECK_POINT_TAG = "CheckPoint";
 }

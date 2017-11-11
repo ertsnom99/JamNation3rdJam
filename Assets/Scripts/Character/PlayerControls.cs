@@ -3,11 +3,11 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 // PlayerController script requires thoses components and will be added if they aren't already there
-//[RequireComponent(typeof(CharacterMovement))]
+[RequireComponent(typeof(PlayerMovement))]
 
 public class PlayerControls : MonoBehaviour
 {
-    //protected CharacterMovement movementScript;
+    protected PlayerMovement movementScript;
     
     [SerializeField]
     private string usedJoystickName = "";
@@ -20,7 +20,7 @@ public class PlayerControls : MonoBehaviour
 
     private void Awake()
     {
-        //movementScript = GetComponent<CharacterMovement>();
+        movementScript = GetComponent<PlayerMovement>();
     }
 
     private void Update()
@@ -61,7 +61,7 @@ public class PlayerControls : MonoBehaviour
 
     private void UpdateMovement(Hashtable inputs)
     {
-        //movementScript.UpdateMovement(inputs);
+        movementScript.UpdateMovement(inputs);
     }
 
     private void TestInputs(Hashtable inputs)

@@ -23,10 +23,6 @@ public class PlayerMovement : MonoBehaviour
         m_rigidbody.velocity = m_initialDirection * m_currentSpeed;
     }
 
-    // Update is called once per frame
-    void Update()
-    {}
-
     public void UpdateMovement(Hashtable inputs)
     {
         if (IsOverThreshold((float)inputs["horizontalInput"]) || IsOverThreshold((float)inputs["verticalInput"]))

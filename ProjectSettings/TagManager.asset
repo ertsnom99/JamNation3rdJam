@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PathCollider
   - CheckPoint
+  - ParticleTrail
   layers:
   - Default
   - TransparentFX

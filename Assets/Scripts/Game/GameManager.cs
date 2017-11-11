@@ -10,22 +10,42 @@ public class GameManager : MonoSingleton<GameManager>
     public const string PARTICLE_TRAIL_TAG = "ParticleTrail";
     public const string CHECK_POINT_TAG = "CheckPoint";
 
+    private int currentLevelIndex = 0;
+
+    public Level CurrentLevel { get; private set; }
+
     [SerializeField]
     private GameObject[] players;
+    public GameObject[] Players
+    {
+        get { return players; }
+        private set { players = value; }
+    }
+
     [SerializeField]
-    private Path[] paths;
+    private Level[] levels;
 
     [SerializeField]
     private InitialLaunch initialLaunch;
+    public InitialLaunch InitialLaunch
+    {
+        get { return initialLaunch; }
+        private set { initialLaunch = value; }
+    }
 
     private void Start()
     {
-        // Associate each playe rto it<s path
-        for (int i = 0; i < paths.Length; i++)
+        StartNextLevel();
+    }
+
+    public void StartNextLevel()
+    {
+        if (currentLevelIndex != 0)
         {
-            paths[i].SetFollowingPlayer(players[i]);
+            InitialLaunch.ReplaceAtBeginning();
+            Destroy(CurrentLevel);
         }
 
-        initialLaunch.enabled = true;
+        CurrentLevel = Instantiate(levels[currentLevelIndex]);
     }
 }

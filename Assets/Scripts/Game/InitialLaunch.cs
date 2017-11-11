@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ using UnityEngine;
 public class InitialLaunch : MonoBehaviour
 {
     public float m_timeToExplode;
+    public Vector3 m_positionTobegin;
     public Vector3 m_positionToExplode;
     public List<GameObject> m_players = new List<GameObject>();
 
@@ -40,6 +42,11 @@ public class InitialLaunch : MonoBehaviour
         }
     }
 
+    public void ReplaceAtBeginning()
+    {
+        transform.position = m_positionTobegin;
+    }
+
     private void StartGame()
     {
         // Stop the firework launcher
@@ -60,6 +67,8 @@ public class InitialLaunch : MonoBehaviour
         {
             particleSystem.Stop();
         }
+
+        GameManager.Instance.CurrentLevel.StartLevelTimer();
 
         enabled = false;
     }

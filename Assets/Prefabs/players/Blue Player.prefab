@@ -62,7 +62,6 @@ GameObject:
   - component: {fileID: 114314654127983392}
   - component: {fileID: 114160853312371668}
   - component: {fileID: 54836453764087410}
-  - component: {fileID: 114450019384053966}
   m_Layer: 0
   m_Name: Blue Player
   m_TagString: Untagged
@@ -284,7 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_positionTobegin: {x: 0, y: 0, z: 0}
-  m_initialDirection: {x: 0, y: 1, z: 0}
+  m_initialDirection: {x: 0.5, y: -0.5, z: 0}
   m_currentSpeed: 1
   m_thresholdUpdate: 0.1
   m_angularSpeed: 0.2
@@ -323,18 +322,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1a7d9964ce00e546af1c6e866ce577f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114450019384053966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1452775747599668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b2a2f89dc8d0974ea291f75c513f677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireworkColor: 0
 --- !u!135 &135047097404311832
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -407,7 +394,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 7047693
+  randomSeed: -1728114771
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3724,7 +3711,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -218039888
+  randomSeed: 1981123849
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10358,7 +10345,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 797154348
+  randomSeed: -621892475
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -13675,7 +13662,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1421133406
+  randomSeed: 1312667354
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -16965,8 +16952,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1148681779
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -17019,8 +17006,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1148681779
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -17073,8 +17060,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1148681779
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -17127,8 +17114,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1148681779
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -17181,8 +17168,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1148681779
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0

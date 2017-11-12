@@ -13,17 +13,25 @@ public class Level : MonoBehaviour
 
     private IEnumerator endLevelCoroutine;
 
+    private CheckPointsManager checkPointsManager;
+
     private void Start()
     {
+        checkPointsManager = GetComponentInChildren<CheckPointsManager>();
+
         // Associate each player to it's path
         for (int i = 0; i < paths.Length; i++)
         {
             paths[i].SetFollowingPlayer(GameManager.Instance.Players[i]);
             GameManager.Instance.Players[i].GetComponent<PlayerMovement>().ResetNotFollowingCurveDistance();
         }
+
+        SoundManager.Instance.PlayOneShotSound("SFXLaunchFirwork");
         
         GameManager.Instance.InitialLaunch.enabled = true;
         GameManager.Instance.CameraTransitionManager.enabled = true;
+
+        checkPointsManager.ResetActivatedCheckPoint();
     }
 
     public void StartLevelTimer()
@@ -40,7 +48,7 @@ public class Level : MonoBehaviour
 
     private void EndLevel()
     {
-        if(!GetComponentInChildren<CheckPointsManager>().AreCheckPointAllActivated())
+        if(!checkPointsManager.AreCheckPointAllActivated())
         {
 Debug.Log("YOU LOST!!!");
             GameManager.Instance.CameraTransitionManager.SetMoveToIntroTransition();

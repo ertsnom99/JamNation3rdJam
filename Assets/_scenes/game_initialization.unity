@@ -24758,7 +24758,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  m_startFOV: 25
+  m_startFOV: 30
   m_endFOV: 60
 --- !u!54 &1830990923
 Rigidbody:

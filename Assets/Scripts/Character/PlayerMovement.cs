@@ -23,9 +23,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Use this for initialization
-    void Start()
+    public void StartMovement(bool start)
     {
-        m_rigidbody.velocity = m_initialDirection * m_currentSpeed;
+        m_rigidbody.velocity = start ? (m_initialDirection * m_currentSpeed) : Vector3.zero;
     }
 
     public void UpdateMovement(Hashtable inputs)

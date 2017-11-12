@@ -8,7 +8,7 @@ public class InitialLaunch : MonoBehaviour
     private ParticleSystem[] m_particleSystems;
     private Rigidbody m_rigidbody;
 
-    //public ParticleSystem m_centralExplosion;
+    public ParticleSystem m_centralExplosion;
 
     [Header("Launch Values")]
     public float m_timeToMoveUp;
@@ -100,6 +100,8 @@ public class InitialLaunch : MonoBehaviour
             // Enable all particule system
             player.GetComponent<Firework>().enabledParticuleSystem(true);
         }
+
+        m_centralExplosion.Play();
 
         // Stop all particule system
         EnableParticleEmission(false);

@@ -21,8 +21,9 @@ public class Level : MonoBehaviour
             paths[i].SetFollowingPlayer(GameManager.Instance.Players[i]);
             GameManager.Instance.Players[i].GetComponent<PlayerMovement>().ResetNotFollowingCurveDistance();
         }
-
+        
         GameManager.Instance.InitialLaunch.enabled = true;
+        GameManager.Instance.CameraTransitionManager.enabled = true;
     }
 
     public void StartLevelTimer()
@@ -71,8 +72,23 @@ Debug.Log("YOU LOST!!!");
             // Replace the player at his starting point
             player.GetComponent<PlayerMovement>().ReplaceAtBeginning();
         }
+        
+        if (!GameManager.Instance.IsCurrentLevelLastLevel())
+        {
+            GameManager.Instance.InitialLaunch.EnableParticleEmission(true);
 
-        GameManager.Instance.StartNextLevel();
+            GameManager.Instance.InitialLaunch.SetMoveDownTransitionValues();
+            GameManager.Instance.CameraTransitionManager.SetMoveDownLaunchTransition();
+
+            GameManager.Instance.InitialLaunch.enabled = true;
+            GameManager.Instance.CameraTransitionManager.enabled = true;
+        }
+        else
+        {
+Debug.Log("ALL LEVEL DONE!!!");
+            GameManager.Instance.CameraTransitionManager.SetMoveToIntroTransition();
+            GameManager.Instance.CameraTransitionManager.enabled = true;
+        }
     }
 
     public void FailLevel()

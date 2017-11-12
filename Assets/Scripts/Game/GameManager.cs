@@ -15,6 +15,14 @@ public class GameManager : MonoSingleton<GameManager>
     public Level CurrentLevel { get; private set; }
 
     [SerializeField]
+    private CameraTransitionManager cameraTransitionManager;
+    public CameraTransitionManager CameraTransitionManager
+    {
+        get { return cameraTransitionManager; }
+        private set { cameraTransitionManager = value; }
+    }
+
+    [SerializeField]
     private GameObject[] players;
     public GameObject[] Players
     {
@@ -33,8 +41,28 @@ public class GameManager : MonoSingleton<GameManager>
         private set { initialLaunch = value; }
     }
 
+    private bool IsMainScreen;
+
     private void Start()
     {
+        InitialLaunch.EnableParticleEmission(false);
+
+        IsMainScreen = true;
+    }
+
+    private void Update()
+    {
+        if (IsMainScreen && Input.GetButtonDown("Submit"))
+        {
+            IsMainScreen = false; 
+            StartGame();
+        }
+    }
+
+    private void StartGame()
+    {
+        currentLevel = 0;
+
         foreach (GameObject player in Players)
         {
             // Diseable the movement of the player
@@ -47,25 +75,37 @@ public class GameManager : MonoSingleton<GameManager>
             player.GetComponent<PlayerMovement>().ReplaceAtBeginning();
         }
 
-        currentLevel = 0;
-        StartNextLevel();
+        InitialLaunch.SetMoveDownTransitionValues();
+        InitialLaunch.EnableParticleEmission(true);
+        InitialLaunch.enabled = true;
+
+        CameraTransitionManager.SetMoveToGameTransition();
+        CameraTransitionManager.enabled = true;
     }
 
     public void StartNextLevel()
     {
         currentLevel++;
-
+        
         if (currentLevel != 1)
         {
-            InitialLaunch.ReplaceAtBeginning();
-            InitialLaunch.EnableParticleEmission(true);
-
             Destroy(CurrentLevel.gameObject);
         }
 
-        CurrentLevel = Instantiate(levels[currentLevel - 1]);
+        InitialLaunch.SetMoveUpTransitionValues();
+        InitialLaunch.EnableParticleEmission(true);
+        CameraTransitionManager.SetMoveUpLaunchTransition();
 
-        // For test purposses
-        if (currentLevel == 2) currentLevel = 1;
+        CurrentLevel = Instantiate(levels[currentLevel - 1]);        
+    }
+
+    public bool IsCurrentLevelLastLevel()
+    {
+        return (levels.Length == currentLevel);
+    }
+
+    public void EndGame()
+    {
+        IsMainScreen = true;
     }
 }

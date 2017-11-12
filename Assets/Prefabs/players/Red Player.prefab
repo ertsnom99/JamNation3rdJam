@@ -56,11 +56,13 @@ GameObject:
   - component: {fileID: 33283344328293650}
   - component: {fileID: 135143958653170768}
   - component: {fileID: 23782294643797356}
+  - component: {fileID: 114992363855048762}
   - component: {fileID: 114550944093739258}
   - component: {fileID: 114421249384161434}
   - component: {fileID: 114736460010895474}
   - component: {fileID: 114040799000399762}
   - component: {fileID: 54187760860158332}
+  - component: {fileID: 114384132106282672}
   m_Layer: 0
   m_Name: Red Player
   m_TagString: Untagged
@@ -270,6 +272,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_burstEmitter: {fileID: 0}
+--- !u!114 &114384132106282672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1507615611986238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2a2f89dc8d0974ea291f75c513f677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireworkColor: 2
 --- !u!114 &114421249384161434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -281,9 +295,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb3dff35974a0c4498ca27fe0bf855f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_positionTobegin: {x: 0, y: 0, z: 0}
   m_initialDirection: {x: 0, y: -1, z: 0}
   m_currentSpeed: 1
   m_thresholdUpdate: 0.1
+  m_angularSpeed: 0.2
 --- !u!114 &114550944093739258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -307,6 +323,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1a7d9964ce00e546af1c6e866ce577f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114992363855048762
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1507615611986238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2a2f89dc8d0974ea291f75c513f677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireworkColor: 2
 --- !u!135 &135143958653170768
 SphereCollider:
   m_ObjectHideFlags: 1

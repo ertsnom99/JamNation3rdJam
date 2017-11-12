@@ -10,9 +10,17 @@ public class GameManager : MonoSingleton<GameManager>
     public const string PARTICLE_TRAIL_TAG = "ParticleTrail";
     public const string CHECK_POINT_TAG = "CheckPoint";
 
-    private int currentLevelIndex = 0;
+    private int currentLevel = 0;
 
     public Level CurrentLevel { get; private set; }
+
+    [SerializeField]
+    private CameraTransitionManager cameraTransitionManager;
+    public CameraTransitionManager CameraTransitionManager
+    {
+        get { return cameraTransitionManager; }
+        private set { cameraTransitionManager = value; }
+    }
 
     [SerializeField]
     private GameObject[] players;
@@ -33,24 +41,71 @@ public class GameManager : MonoSingleton<GameManager>
         private set { initialLaunch = value; }
     }
 
+    private bool IsMainScreen;
+
     private void Start()
     {
-        StartNextLevel();
+        InitialLaunch.EnableParticleEmission(false);
+
+        IsMainScreen = true;
+    }
+
+    private void Update()
+    {
+        if (IsMainScreen && Input.GetButtonDown("Submit"))
+        {
+            IsMainScreen = false; 
+            StartGame();
+        }
+    }
+
+    private void StartGame()
+    {
+        currentLevel = 0;
+
+        foreach (GameObject player in Players)
+        {
+            // Diseable the movement of the player
+            player.GetComponent<PlayerControls>().EnableMovementControls(false);
+
+            // Disable all particule system
+            player.GetComponent<Firework>().enabledParticuleSystem(false);
+
+            // Replace the player at his starting point
+            player.GetComponent<PlayerMovement>().ReplaceAtBeginning();
+        }
+
+        InitialLaunch.SetMoveDownTransitionValues();
+        InitialLaunch.EnableParticleEmission(true);
+        InitialLaunch.enabled = true;
+
+        CameraTransitionManager.SetMoveToGameTransition();
+        CameraTransitionManager.enabled = true;
     }
 
     public void StartNextLevel()
     {
-        if (currentLevelIndex != 0)
+        currentLevel++;
+        
+        if (currentLevel != 1)
         {
-            InitialLaunch.ReplaceAtBeginning();
-            Destroy(CurrentLevel);
+            Destroy(CurrentLevel.gameObject);
         }
 
-        foreach(GameObject player in Players)
-        {
-            player.GetComponent<PlayerControls>().EnableMovementControls(false);
-        }
+        InitialLaunch.SetMoveUpTransitionValues();
+        InitialLaunch.EnableParticleEmission(true);
+        CameraTransitionManager.SetMoveUpLaunchTransition();
 
-        CurrentLevel = Instantiate(levels[currentLevelIndex]);
+        CurrentLevel = Instantiate(levels[currentLevel - 1]);        
+    }
+
+    public bool IsCurrentLevelLastLevel()
+    {
+        return (levels.Length == currentLevel);
+    }
+
+    public void EndGame()
+    {
+        IsMainScreen = true;
     }
 }

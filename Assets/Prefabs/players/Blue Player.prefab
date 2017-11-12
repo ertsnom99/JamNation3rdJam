@@ -56,11 +56,13 @@ GameObject:
   - component: {fileID: 33994126608141688}
   - component: {fileID: 135047097404311832}
   - component: {fileID: 23803212320791984}
+  - component: {fileID: 114098499852760980}
   - component: {fileID: 114169633513715832}
   - component: {fileID: 114103160464696926}
   - component: {fileID: 114314654127983392}
   - component: {fileID: 114160853312371668}
   - component: {fileID: 54836453764087410}
+  - component: {fileID: 114450019384053966}
   m_Layer: 0
   m_Name: Blue Player
   m_TagString: Untagged
@@ -258,6 +260,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114098499852760980
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1452775747599668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2a2f89dc8d0974ea291f75c513f677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireworkColor: 0
 --- !u!114 &114103160464696926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -269,9 +283,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb3dff35974a0c4498ca27fe0bf855f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_positionTobegin: {x: 0, y: 0, z: 0}
   m_initialDirection: {x: 0, y: 1, z: 0}
   m_currentSpeed: 1
   m_thresholdUpdate: 0.1
+  m_angularSpeed: 0.2
 --- !u!114 &114160853312371668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -307,6 +323,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1a7d9964ce00e546af1c6e866ce577f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114450019384053966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1452775747599668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2a2f89dc8d0974ea291f75c513f677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireworkColor: 0
 --- !u!135 &135047097404311832
 SphereCollider:
   m_ObjectHideFlags: 1

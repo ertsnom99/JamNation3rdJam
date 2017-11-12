@@ -5,12 +5,16 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Vector3 m_positionTobegin;
     public Vector3 m_initialDirection;
+
     public float m_currentSpeed;
     public float m_thresholdUpdate;
+    public float m_angularSpeed;
 
     private Rigidbody m_rigidbody;
     private Vector3 m_currentDirection;
+    private Vector3 vel = Vector3.zero;
 
     public bool IsFollowingCurve { get; private set; }
     public float NotFollowingCurveMaxDistance { get; private set; }
@@ -32,7 +36,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (IsOverThreshold((float)inputs["horizontalInput"]) || IsOverThreshold((float)inputs["verticalInput"]))
         {
-            m_currentDirection.Set((float)inputs["horizontalInput"], (float)inputs["verticalInput"], 0.0f);
+            Vector3 newDirection = new Vector3((float)inputs["horizontalInput"], (float)inputs["verticalInput"], 0.0f);
+            newDirection.Normalize();
+
+            m_currentDirection = Vector3.SmoothDamp(m_currentDirection, newDirection, ref vel, m_angularSpeed);            
             m_currentDirection.Normalize();
 
             m_rigidbody.velocity = m_currentDirection * m_currentSpeed;
@@ -68,6 +75,11 @@ public class PlayerMovement : MonoBehaviour
     public static void DebugVector(Vector2 vec)
     {
         Debug.Log(string.Format("{0}, {1}", vec.x, vec.y));
+    }
+
+    public void ReplaceAtBeginning()
+    {
+        transform.position = m_positionTobegin;
     }
 
     public void SaveCurrentNotFollowingCurveDistance()

@@ -36,4 +36,9 @@ public class CheckPointsManager : MonoBehaviour
     {
         return (nbrActivatedCheckPoint == checkPointGroupes.Length);
     }
+
+    public void ResetActivatedCheckPoint()
+    {
+        nbrActivatedCheckPoint = 0;
+    }
 }

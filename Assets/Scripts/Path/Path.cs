@@ -16,7 +16,7 @@ public class Path : MonoBehaviour
 
     private ParticleSystem[] followingPlayerParticleSystems;
     private int ColliderInCount = 0;
-    
+
     private void Start()
     {
         ParticleSystem[] particleSystems = FollowingPlayer.GetComponentsInChildren<ParticleSystem>();
@@ -60,9 +60,12 @@ public class Path : MonoBehaviour
         {
             foreach (ParticleSystem followingPlayerParticleSystem in followingPlayerParticleSystems)
             {
-                followingPlayerParticleSystem.Stop();
-                followingPlayerMovement.SetIsFollowingCurve(false);
+                if (followingPlayerParticleSystem.name != "HeadTrail")
+                {
+                    followingPlayerParticleSystem.Stop();
+                }
             }
+            followingPlayerMovement.SetIsFollowingCurve(false);
         }
     }
 }

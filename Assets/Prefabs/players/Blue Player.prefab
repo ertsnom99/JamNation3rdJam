@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198836027611260270}
   - component: {fileID: 199198369783944896}
   m_Layer: 0
-  m_Name: trail
+  m_Name: HeadTrail
   m_TagString: ParticleTrail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,9 +284,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_positionTobegin: {x: 0, y: 0, z: 0}
   m_initialDirection: {x: 0.5, y: -0.5, z: 0}
-  m_currentSpeed: 1
+  m_currentSpeed: 2
   m_thresholdUpdate: 0.1
-  m_angularSpeed: 0.2
+  m_angularSpeed: 0.15
 --- !u!114 &114160853312371668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3711,7 +3711,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1981123849
+  randomSeed: 921837718
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10345,7 +10345,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -621892475
+  randomSeed: 1067984818
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -13662,14 +13662,14 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1312667354
+  randomSeed: 246996359
   InitialModule:
     serializedVersion: 3
     enabled: 1
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 11
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -14573,7 +14573,7 @@ ParticleSystem:
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 6361
+        ctime1: 2621
         ctime2: 65535
         ctime3: 0
         ctime4: 0
@@ -14581,11 +14581,11 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 5975
+        atime1: 193
         atime2: 56669
         atime3: 65535
-        atime4: 0
-        atime5: 0
+        atime4: 65535
+        atime5: 65535
         atime6: 0
         atime7: 0
         m_Mode: 0

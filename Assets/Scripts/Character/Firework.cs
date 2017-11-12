@@ -21,7 +21,7 @@ public class Firework : MonoBehaviour
 
     public void enabledParticuleSystem(bool enable)
     {
-        foreach(ParticleSystem particleSystem in particleSystems)
+        foreach (ParticleSystem particleSystem in particleSystems)
         {
             if (particleSystem.main.loop)
             {

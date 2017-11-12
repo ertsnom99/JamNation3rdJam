@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -40,6 +41,8 @@ public class GameManager : MonoSingleton<GameManager>
         get { return initialLaunch; }
         private set { initialLaunch = value; }
     }
+
+    public SpriteRenderer m_titleScreen;
 
     private bool IsMainScreen;
 
@@ -84,6 +87,7 @@ public class GameManager : MonoSingleton<GameManager>
 
         CameraTransitionManager.SetMoveToGameTransition();
         CameraTransitionManager.enabled = true;
+        StartCoroutine(FadeOutTitle(Time.time, 2.0f));
     }
 
     public void StartNextLevel()
@@ -110,5 +114,26 @@ public class GameManager : MonoSingleton<GameManager>
     public void EndGame()
     {
         IsMainScreen = true;
+        StartCoroutine(FadeInTitle(Time.time, 2.0f));
+    }
+
+
+    IEnumerator FadeInTitle(float initialTime, float time)
+    {
+        for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / time)
+        {
+            m_titleScreen.color = new Color(1, 1, 1, Mathf.Lerp(0, 1, t));
+            yield return null;
+        }
+    }
+
+    IEnumerator FadeOutTitle(float initialTime, float time)
+    {
+        yield return new WaitForSeconds(2.0f);
+        for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / time)
+        {
+            m_titleScreen.color = new Color(1, 1, 1, Mathf.Lerp(1, 0, t));
+                    yield return null;
+        }
     }
 }

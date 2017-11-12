@@ -100,6 +100,8 @@ Debug.Log("YOU LOST!!!");
 Debug.Log("ALL LEVEL DONE!!!");
             GameManager.Instance.CameraTransitionManager.SetMoveToIntroTransition();
             GameManager.Instance.CameraTransitionManager.enabled = true;
+
+            Destroy(gameObject);
         }
     }
 

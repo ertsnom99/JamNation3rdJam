@@ -6895,8 +6895,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76423a2e17f6e2a4798b7bc4f4a1621f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 5
-  maxCurveNotFollowedDistance: 200
+  time: 10
+  maxCurveNotFollowedDistance: 3
   paths:
   - {fileID: 114700861277482178}
   - {fileID: 114206736897900716}

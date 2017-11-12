@@ -96,5 +96,7 @@ Debug.Log("ALL LEVEL DONE!!!");
         StopCoroutine(endLevelCoroutine);
 
 Debug.Log("YOU LOST!!!");
+        GameManager.Instance.CameraTransitionManager.SetMoveToIntroTransition();
+        GameManager.Instance.CameraTransitionManager.enabled = true;
     }
 }

@@ -14480,8 +14480,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76423a2e17f6e2a4798b7bc4f4a1621f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 3
-  maxCurveNotFollowedDistance: 5
+  time: 5
+  maxCurveNotFollowedDistance: 1
   paths:
   - {fileID: 114206736897900716}
   - {fileID: 114076715694134222}

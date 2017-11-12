@@ -10,22 +10,11 @@ public class SoundManager : MonoSingleton<SoundManager>
     public AudioSource SecondaryAmbient;
     public AudioSource SFXSource;
     public AudioSource SFXSourceAlt;
-
-    public AudioClip AMBMenu;
+    
     public AudioClip AMBGame;
-    public AudioClip AMBPause;
-
-    public AudioClip SFXBuyItem;
-    public AudioClip SFXClientServed;
-    public AudioClip SFXEnemyHitsTable;
-    public AudioClip SFXGotRobbed;
-    public AudioClip SFXJingleDefeat;
-    public AudioClip SFXQuitShop;
-    public AudioClip SFXShopOpens;
-    public AudioClip SFXStartRound;
-    public AudioClip SFXTrapPlanted;
-    public AudioClip SFXTrapTiggered;
-
+    
+    public AudioClip SFXLaunchFirwork;
+    
     private Dictionary<string, AudioClip> AMBSounds;
     private Dictionary<string, AudioClip> FXSounds;
 
@@ -33,22 +22,11 @@ public class SoundManager : MonoSingleton<SoundManager>
     {
         FXSounds = new Dictionary<string, AudioClip>();
 
-        FXSounds.Add("SFXBuyItem", SFXBuyItem);
-        FXSounds.Add("SFXClientServed", SFXClientServed);
-        FXSounds.Add("SFXEnemyHitsTable", SFXEnemyHitsTable);
-        FXSounds.Add("SFXGotRobbed", SFXGotRobbed);
-        FXSounds.Add("SFXJingleDefeat", SFXJingleDefeat);
-        FXSounds.Add("SFXQuitShop", SFXQuitShop);
-        FXSounds.Add("SFXShopOpens", SFXShopOpens);
-        FXSounds.Add("SFXStartRound", SFXStartRound);
-        FXSounds.Add("SFXTrapPlanted", SFXTrapPlanted);
-        FXSounds.Add("SFXImpact", SFXTrapTiggered);
+        FXSounds.Add("SFXLaunchFirwork", SFXLaunchFirwork);
 
         AMBSounds = new Dictionary<string, AudioClip>();
-
-        AMBSounds.Add("AMBMenu", AMBMenu);
+        
         AMBSounds.Add("AMBGame", AMBGame);
-        AMBSounds.Add("AMBPause", AMBPause);
     }
 
     public void SetPrimaryAmbient(string soundKey)

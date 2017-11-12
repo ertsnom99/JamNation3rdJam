@@ -17712,19 +17712,8 @@ MonoBehaviour:
   SecondaryAmbient: {fileID: 0}
   SFXSource: {fileID: 0}
   SFXSourceAlt: {fileID: 0}
-  AMBMenu: {fileID: 0}
-  AMBGame: {fileID: 0}
-  AMBPause: {fileID: 0}
-  SFXBuyItem: {fileID: 0}
-  SFXClientServed: {fileID: 0}
-  SFXEnemyHitsTable: {fileID: 0}
-  SFXGotRobbed: {fileID: 0}
-  SFXJingleDefeat: {fileID: 0}
-  SFXQuitShop: {fileID: 0}
-  SFXShopOpens: {fileID: 0}
-  SFXStartRound: {fileID: 0}
-  SFXTrapPlanted: {fileID: 0}
-  SFXTrapTiggered: {fileID: 0}
+  AMBGame: {fileID: 8300000, guid: 2ebafdcefd8a43046813a33600ca422b, type: 3}
+  SFXLaunchFirwork: {fileID: 8300000, guid: e281739d44c654d41b21726b3e997183, type: 3}
 --- !u!1 &865486446 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1452775747599668, guid: db34f7201718261429f0f2cb8df46e71,

@@ -45,7 +45,6 @@ GameObject:
   - component: {fileID: 114487533309152422}
   - component: {fileID: 114799794404691086}
   - component: {fileID: 54206083272204496}
-  - component: {fileID: 114221338936742314}
   m_Layer: 0
   m_Name: Green Player
   m_TagString: Untagged
@@ -260,18 +259,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114221338936742314
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1394503937096792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b2a2f89dc8d0974ea291f75c513f677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireworkColor: 1
 --- !u!114 &114222095527210684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -307,10 +294,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_positionTobegin: {x: 0, y: 0, z: 0}
-  m_initialDirection: {x: 1, y: 0, z: 0}
-  m_currentSpeed: 2.5
+  m_initialDirection: {x: 0.5, y: 0.5, z: 0}
+  m_currentSpeed: 1
   m_thresholdUpdate: 0.1
-  m_angularSpeed: 0.15
+  m_angularSpeed: 0.2
 --- !u!114 &114799794404691086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3724,7 +3711,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -606622550
+  randomSeed: 27886121
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7041,7 +7028,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -30424160
+  randomSeed: 160824315
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10358,7 +10345,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1647399246
+  randomSeed: -1881697740
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -13675,7 +13662,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -56844074
+  randomSeed: -1297643473
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -17181,8 +17168,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1148681779
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0

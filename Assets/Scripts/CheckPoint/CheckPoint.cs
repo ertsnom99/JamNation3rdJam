@@ -2,6 +2,7 @@
 
 public class CheckPoint : MonoBehaviour
 {
+    private AudioSource audioSource;
     private CheckPointsManager checkPointManager;
 
     [SerializeField]
@@ -14,6 +15,7 @@ public class CheckPoint : MonoBehaviour
 
     private void Start()
     {
+        audioSource = GetComponentInChildren<AudioSource>();
         checkPointManager = GetComponentInParent<CheckPointsManager>();
     }
 
@@ -32,6 +34,8 @@ public class CheckPoint : MonoBehaviour
     public void Explode()
     {
         GetComponent<SphereCollider>().enabled = false;
+
+        audioSource.Play();
 
         Debug.Log("activate");
         //TODO do a particule effect

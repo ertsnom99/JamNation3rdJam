@@ -14,7 +14,8 @@ public class SoundManager : MonoSingleton<SoundManager>
     public AudioClip AMBGame;
     
     public AudioClip SFXLaunchFirwork;
-    
+    public AudioClip SFXPath;
+
     private Dictionary<string, AudioClip> AMBSounds;
     private Dictionary<string, AudioClip> FXSounds;
 
@@ -23,6 +24,7 @@ public class SoundManager : MonoSingleton<SoundManager>
         FXSounds = new Dictionary<string, AudioClip>();
 
         FXSounds.Add("SFXLaunchFirwork", SFXLaunchFirwork);
+        FXSounds.Add("SFXPath", SFXPath);
 
         AMBSounds = new Dictionary<string, AudioClip>();
         

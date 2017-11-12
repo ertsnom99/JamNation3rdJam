@@ -307,10 +307,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_positionTobegin: {x: 0, y: 0, z: 0}
-  m_initialDirection: {x: -1, y: 0, z: 0}
-  m_currentSpeed: 2.5
+  m_initialDirection: {x: -0.5, y: -0.5, z: 0}
+  m_currentSpeed: 1
   m_thresholdUpdate: 0.1
-  m_angularSpeed: 0.15
+  m_angularSpeed: 0.2
 --- !u!114 &114756781197177104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -394,7 +394,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1853320168
+  randomSeed: 11651415
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3711,7 +3711,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1477246413
+  randomSeed: 1805207441
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10345,7 +10345,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1977731593
+  randomSeed: -387788676
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -13662,7 +13662,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 328709706
+  randomSeed: 245804714
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -16952,8 +16952,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1148681779
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0

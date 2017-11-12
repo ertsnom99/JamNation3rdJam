@@ -6,6 +6,7 @@ using UnityEngine;
 public class InitialLaunch : MonoBehaviour
 {
     private ParticleSystem[] m_particleSystems;
+    private AudioSource m_audioSource;
     private Rigidbody m_rigidbody;
 
     public ParticleSystem m_centralExplosion;
@@ -39,6 +40,7 @@ public class InitialLaunch : MonoBehaviour
     private void Awake()
     {
         m_particleSystems = GetComponentsInChildren<ParticleSystem>();
+        m_audioSource = GetComponentInChildren<AudioSource>();
         m_rigidbody = GetComponent<Rigidbody>();
     }
 
@@ -102,6 +104,9 @@ public class InitialLaunch : MonoBehaviour
         }
 
         m_centralExplosion.Play();
+        m_audioSource.Play();
+
+        SoundManager.Instance.PlayOneShotSound("SFXPath");
 
         // Stop all particule system
         EnableParticleEmission(false);

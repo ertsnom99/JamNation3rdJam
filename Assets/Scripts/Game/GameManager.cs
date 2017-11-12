@@ -46,6 +46,11 @@ public class GameManager : MonoSingleton<GameManager>
             Destroy(CurrentLevel);
         }
 
+        foreach(GameObject player in Players)
+        {
+            player.GetComponent<PlayerControls>().EnableMovementControls(false);
+        }
+
         CurrentLevel = Instantiate(levels[currentLevelIndex]);
     }
 }

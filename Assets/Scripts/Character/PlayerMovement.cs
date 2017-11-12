@@ -12,15 +12,20 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody m_rigidbody;
     private Vector3 m_currentDirection;
 
+    public bool IsFollowingCurve { get; private set; }
+    public float NotFollowingCurveMaxDistance { get; private set; }
+
+    private float currentNotFollowingCurveDistance = 0.0f;
+
     private void Awake()
     {
         m_rigidbody = GetComponent<Rigidbody>();
     }
 
     // Use this for initialization
-    void Start()
+    public void StartMovement(bool start)
     {
-        m_rigidbody.velocity = m_initialDirection * m_currentSpeed;
+        m_rigidbody.velocity = start ? (m_initialDirection * m_currentSpeed) : Vector3.zero;
     }
 
     public void UpdateMovement(Hashtable inputs)
@@ -32,8 +37,13 @@ public class PlayerMovement : MonoBehaviour
 
             m_rigidbody.velocity = m_currentDirection * m_currentSpeed;
         }
-    }
 
+        if (!IsFollowingCurve)
+        {
+            currentNotFollowingCurveDistance += m_currentSpeed * Time.deltaTime;
+        }
+    }
+    
     private bool IsOverThreshold(float value)
     {
         return Mathf.Abs(value) >= m_thresholdUpdate;
@@ -58,5 +68,50 @@ public class PlayerMovement : MonoBehaviour
     public static void DebugVector(Vector2 vec)
     {
         Debug.Log(string.Format("{0}, {1}", vec.x, vec.y));
+    }
+
+    public void SaveCurrentNotFollowingCurveDistance()
+    {
+        if (IsWorstScore())
+        {
+            NotFollowingCurveMaxDistance = currentNotFollowingCurveDistance;
+        }
+    }
+    
+    public void ResetNotFollowingCurveDistance()
+    {
+        currentNotFollowingCurveDistance = 0.0f;
+        NotFollowingCurveMaxDistance = 0.0f;
+    }
+
+    public void SetIsFollowingCurve(bool isFollowing)
+    {
+        if (JustStopFollowingPath(isFollowing))
+        { 
+            currentNotFollowingCurveDistance = 0.0f;
+        }
+        else if(JustStartFollowingPath(isFollowing) && IsWorstScore())
+        {
+            NotFollowingCurveMaxDistance = currentNotFollowingCurveDistance;
+        }
+
+        IsFollowingCurve = isFollowing;
+    }
+
+    private bool JustStopFollowingPath(bool isFollowing)
+    {
+        return (!isFollowing
+                && IsFollowingCurve);
+    }
+
+    private bool JustStartFollowingPath(bool isFollowing)
+    {
+        return (isFollowing
+                && !IsFollowingCurve);
+    }
+
+    private bool IsWorstScore()
+    {
+        return (currentNotFollowingCurveDistance > NotFollowingCurveMaxDistance);
     }
 }

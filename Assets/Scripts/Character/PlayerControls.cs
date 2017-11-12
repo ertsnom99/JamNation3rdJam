@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 // PlayerController script requires thoses components and will be added if they aren't already there
 [RequireComponent(typeof(PlayerMovement))]
@@ -8,9 +9,12 @@ public class PlayerControls : MonoBehaviour
 {
     private PlayerMovement movementScript;
     private CheckPointActivator checkPointActivatorScript;
+    private PlayerActions actionsScript;
 
     [SerializeField]
     private string usedJoystickName = "";
+
+    private bool movementControlsEnable = false;
 
     public string UsedJoystickName
     {
@@ -22,6 +26,7 @@ public class PlayerControls : MonoBehaviour
     {
         movementScript = GetComponent<PlayerMovement>();
         checkPointActivatorScript = GetComponent<CheckPointActivator>();
+        actionsScript = GetComponent<PlayerActions>();
     }
 
     private void Update()
@@ -30,8 +35,13 @@ public class PlayerControls : MonoBehaviour
         {
             Hashtable inputs = fetchInputs();
 
-            UpdateMovement(inputs);
-            UpdateCheckPointActivation(inputs);
+            if(movementControlsEnable)
+            {
+                UpdateMovement(inputs);
+                UpdateCheckPointActivation(inputs);
+            }
+
+            UpdateActions(inputs);
 
             //TestInputs(inputs);
         }
@@ -69,6 +79,17 @@ public class PlayerControls : MonoBehaviour
     private void UpdateCheckPointActivation(Hashtable inputs)
     {
         if ((bool)inputs["submitInput"]) checkPointActivatorScript.ActivateCheckPoint();
+    }
+
+    private void UpdateActions(Hashtable inputs)
+    {
+        actionsScript.UpdateActions(inputs);
+    }
+
+    public void EnableMovementControls(bool enable)
+    {
+        movementControlsEnable = enable;
+        movementScript.StartMovement(enable);
     }
 
     private void TestInputs(Hashtable inputs)

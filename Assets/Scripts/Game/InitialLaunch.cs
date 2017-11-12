@@ -13,6 +13,7 @@ public class InitialLaunch : MonoBehaviour
     public List<GameObject> m_players = new List<GameObject>();
     public AnimationCurve m_cameraZoomOnLaunch;
     public AnimationCurve m_fireworkSpeedOnLaunch;
+    public ParticleSystem m_centralExplosion;
 
     private ParticleSystem[] m_particleSystems;
     private Rigidbody m_rigidbody;

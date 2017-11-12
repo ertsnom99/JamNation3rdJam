@@ -43,6 +43,8 @@ public class Level : MonoBehaviour
         if(!GetComponentInChildren<CheckPointsManager>().AreCheckPointAllActivated())
         {
 Debug.Log("YOU LOST!!!");
+            GameManager.Instance.CameraTransitionManager.SetMoveToIntroTransition();
+            GameManager.Instance.CameraTransitionManager.enabled = true;
             return;
         }
 
@@ -57,6 +59,8 @@ Debug.Log("YOU LOST!!!");
             if (playerMovement.NotFollowingCurveMaxDistance > maxCurveNotFollowedDistance)
             {
 Debug.Log("YOU LOST!!!");
+                GameManager.Instance.CameraTransitionManager.SetMoveToIntroTransition();
+                GameManager.Instance.CameraTransitionManager.enabled = true;
                 return;
             }
         }

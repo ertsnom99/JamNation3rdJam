@@ -48,6 +48,9 @@ public class GameManager : MonoSingleton<GameManager>
         InitialLaunch.EnableParticleEmission(false);
 
         IsMainScreen = true;
+
+        SoundManager.Instance.SetPrimaryAmbient("AMBGame");
+        SoundManager.Instance.PlayPrimaryAmbient();
     }
 
     private void Update()

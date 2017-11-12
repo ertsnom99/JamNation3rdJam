@@ -29,6 +29,7 @@ public class CheckPointsManager : MonoBehaviour
     public void IncrementeNbrActivatedCheckPoint()
     {
         nbrActivatedCheckPoint++;
+        Debug.Log(nbrActivatedCheckPoint);
     }
 
     public bool AreCheckPointAllActivated()

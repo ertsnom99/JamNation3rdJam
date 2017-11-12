@@ -367,6 +367,11 @@ Prefab:
       propertyPath: m_burstEmitter
       value: 
       objectReference: {fileID: 1393841151}
+    - target: {fileID: 114581487254995382, guid: d8d726f434e5d2e47ab7fe7c15afce4b,
+        type: 2}
+      propertyPath: m_angularSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d8d726f434e5d2e47ab7fe7c15afce4b, type: 2}
   m_IsPrefabParent: 0
@@ -414,6 +419,11 @@ Prefab:
       propertyPath: m_burstEmitter
       value: 
       objectReference: {fileID: 750086489}
+    - target: {fileID: 114103160464696926, guid: db34f7201718261429f0f2cb8df46e71,
+        type: 2}
+      propertyPath: m_angularSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db34f7201718261429f0f2cb8df46e71, type: 2}
   m_IsPrefabParent: 0
@@ -31474,6 +31484,11 @@ Prefab:
       propertyPath: m_burstEmitter
       value: 
       objectReference: {fileID: 573735078}
+    - target: {fileID: 114421249384161434, guid: 0f705b70b255bcf4a897d98185f84016,
+        type: 2}
+      propertyPath: m_angularSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0f705b70b255bcf4a897d98185f84016, type: 2}
   m_IsPrefabParent: 0
@@ -38459,6 +38474,11 @@ Prefab:
       propertyPath: m_burstEmitter
       value: 
       objectReference: {fileID: 515611213}
+    - target: {fileID: 114724460314668190, guid: 5d8cd7c1482abca40a9cfa1a734150f5,
+        type: 2}
+      propertyPath: m_angularSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d8cd7c1482abca40a9cfa1a734150f5, type: 2}
   m_IsPrefabParent: 0
@@ -38608,6 +38628,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+  m_centralExplosion: {fileID: 0}
   m_startFOV: 70
   m_endFOV: 80
 --- !u!54 &1830990923

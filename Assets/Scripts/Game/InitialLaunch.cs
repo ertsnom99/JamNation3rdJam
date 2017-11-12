@@ -13,6 +13,7 @@ public class InitialLaunch : MonoBehaviour
     public List<GameObject> m_players = new List<GameObject>();
     public AnimationCurve m_cameraZoomOnLaunch;
     public AnimationCurve m_fireworkSpeedOnLaunch;
+    public ParticleSystem m_centralExplosion;
 
     private Rigidbody m_rigidbody;
     private Camera m_currentCamera;
@@ -81,6 +82,8 @@ public class InitialLaunch : MonoBehaviour
         {
             particleSystem.Stop();
         }
+
+        m_centralExplosion.Play();
 
         GameManager.Instance.CurrentLevel.StartLevelTimer();
 

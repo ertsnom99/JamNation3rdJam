@@ -285,6 +285,7 @@ MonoBehaviour:
   m_initialDirection: {x: 0, y: -1, z: 0}
   m_currentSpeed: 1
   m_thresholdUpdate: 0.1
+  m_angularSpeed: 0.2
 --- !u!114 &114550944093739258
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -10,7 +10,7 @@ public class GameManager : MonoSingleton<GameManager>
     public const string PARTICLE_TRAIL_TAG = "ParticleTrail";
     public const string CHECK_POINT_TAG = "CheckPoint";
 
-    private int currentLevelIndex = 0;
+    private int currentLevel = 0;
 
     public Level CurrentLevel { get; private set; }
 
@@ -47,12 +47,15 @@ public class GameManager : MonoSingleton<GameManager>
             player.GetComponent<PlayerMovement>().ReplaceAtBeginning();
         }
 
+        currentLevel = 0;
         StartNextLevel();
     }
 
     public void StartNextLevel()
     {
-        if (currentLevelIndex != 0)
+        currentLevel++;
+
+        if (currentLevel != 1)
         {
             InitialLaunch.ReplaceAtBeginning();
             InitialLaunch.EnableParticleEmission(true);
@@ -60,21 +63,9 @@ public class GameManager : MonoSingleton<GameManager>
             Destroy(CurrentLevel.gameObject);
         }
 
-        CurrentLevel = Instantiate(levels[currentLevelIndex]);
-        currentLevelIndex++;
-    }
+        CurrentLevel = Instantiate(levels[currentLevel - 1]);
 
-    public void StartNextLevelTest()
-    {
-        if (currentLevelIndex != 0)
-        {
-            InitialLaunch.ReplaceAtBeginning();
-            InitialLaunch.EnableParticleEmission(true);
-
-            Destroy(CurrentLevel.gameObject);
-        }
-        
-        CurrentLevel = Instantiate(levels[currentLevelIndex]);
-        //currentLevelIndex++;
+        // For test purposses
+        if (currentLevel == 2) currentLevel = 1;
     }
 }

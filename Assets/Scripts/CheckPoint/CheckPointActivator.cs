@@ -33,6 +33,7 @@ public class CheckPointActivator : MonoBehaviour
         if (other.gameObject == checkPointInRange)
         {
             checkPointInRange = null;
+            GameManager.Instance.CurrentLevel.FailLevel();
         }
     }
 

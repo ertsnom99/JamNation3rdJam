@@ -13,7 +13,9 @@ public class CheckPointsManager : MonoBehaviour
 
     [SerializeField]
     private CheckPointGroupe[] checkPointGroupes;
-    
+
+    private int nbrActivatedCheckPoint = 0;
+
     public CheckPointGroupe GetCheckPointGroupeByCheckPoint(CheckPoint checkPoint)
     {
         foreach(CheckPointGroupe checkPointGroupe in checkPointGroupes)
@@ -22,5 +24,15 @@ public class CheckPointsManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void IncrementeNbrActivatedCheckPoint()
+    {
+        nbrActivatedCheckPoint++;
+    }
+
+    public bool AreCheckPointAllActivated()
+    {
+        return (nbrActivatedCheckPoint == checkPointGroupes.Length);
     }
 }

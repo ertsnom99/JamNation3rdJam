@@ -25,6 +25,8 @@ public class CheckPoint : MonoBehaviour
         {
             checkPoint.Explode();
         }
+
+        checkPointManager.IncrementeNbrActivatedCheckPoint();
     }
 
     public void Explode()

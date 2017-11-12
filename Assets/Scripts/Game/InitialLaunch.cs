@@ -63,7 +63,6 @@ public class InitialLaunch : MonoBehaviour
 
     public void ReplaceAtBeginning()
     {
-        Debug.Log(m_positionTobegin);
         transform.position = m_positionTobegin;
     }
 

@@ -11,6 +11,8 @@ public class Level : MonoBehaviour
     [SerializeField]
     private Path[] paths;
 
+    private IEnumerator endLevelCoroutine;
+
     private void Start()
     {
         // Associate each player to it's path
@@ -25,7 +27,8 @@ public class Level : MonoBehaviour
 
     public void StartLevelTimer()
     {
-        StartCoroutine(WaitForLevelEnd());
+        endLevelCoroutine = WaitForLevelEnd();
+        StartCoroutine(endLevelCoroutine);
     }
 
     IEnumerator WaitForLevelEnd()
@@ -36,6 +39,12 @@ public class Level : MonoBehaviour
 
     private void EndLevel()
     {
+        if(!GetComponentInChildren<CheckPointsManager>().AreCheckPointAllActivated())
+        {
+Debug.Log("YOU LOST!!!");
+            return;
+        }
+
         for (int i = 0; i < GameManager.Instance.Players.Length; i++)
         {
             PlayerMovement playerMovement = GameManager.Instance.Players[i].GetComponent<PlayerMovement>();
@@ -63,6 +72,13 @@ Debug.Log("YOU LOST!!!");
             player.GetComponent<PlayerMovement>().ReplaceAtBeginning();
         }
 
-        GameManager.Instance.StartNextLevelTest();
+        GameManager.Instance.StartNextLevel();
+    }
+
+    public void FailLevel()
+    {
+        StopCoroutine(endLevelCoroutine);
+
+Debug.Log("YOU LOST!!!");
     }
 }

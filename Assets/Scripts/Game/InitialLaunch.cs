@@ -1,69 +1,90 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 
 public class InitialLaunch : MonoBehaviour
 {
-    public float m_timeToExplode;
-    public Vector3 m_positionTobegin;
-    public Vector3 m_positionToExplode;
-    public List<GameObject> m_players = new List<GameObject>();
-    public AnimationCurve m_cameraZoomOnLaunch;
-    public AnimationCurve m_fireworkSpeedOnLaunch;
-    public ParticleSystem m_centralExplosion;
-
     private ParticleSystem[] m_particleSystems;
     private Rigidbody m_rigidbody;
-    private Camera m_currentCamera;
 
-    // Camera
-    public float m_startFOV;
-    public float m_endFOV;
+    //public ParticleSystem m_centralExplosion;
 
-    // Firework
-    Vector3 m_startPosition;
+    [Header("Launch Values")]
+    public float m_timeToMoveUp;
+    public float m_timeToMoveDown;
+
+    public Vector3 m_startPositionAtLaunchMoveUp;
+    public Vector3 m_endPositionAtLaunchMoveUp;
+
+    public Vector3 m_startPositionAtLaunchMoveDown;
+    public Vector3 m_endPositionAtLaunchMoveDown;
+
+    //public AnimationCurve m_cameraZoomOnLaunch;
+    public AnimationCurve m_speedOnLaunchMoveUp;
+    public AnimationCurve m_speedOnLaunchMoveDown;
+
+    // Transition values
     float m_currentLerpTime;
     float m_startLerpTime;
+    float m_lerpDuration;
 
-    private void OnEnable()
-    {
-        m_currentLerpTime = 0.0f;
-        m_startLerpTime = Time.time;
-    }
+    Vector3 m_startPosition;
+    Vector3 m_endPosition;
+
+    AnimationCurve m_movementCurveSpeed;
+
+    Action transitionEndCallback;
 
     private void Awake()
     {
         m_particleSystems = GetComponentsInChildren<ParticleSystem>();
         m_rigidbody = GetComponent<Rigidbody>();
-        m_currentCamera = GetComponentInChildren<Camera>();
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-        m_startPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        m_currentLerpTime = Mathf.Clamp01((Time.time - m_startLerpTime) / m_timeToExplode);
+        m_currentLerpTime = Mathf.Clamp01((Time.time - m_startLerpTime) / m_lerpDuration);
 
-        transform.position = Vector3.Lerp(m_startPosition, m_positionToExplode, m_fireworkSpeedOnLaunch.Evaluate(m_currentLerpTime));
-        m_currentCamera.fieldOfView = Mathf.Lerp(m_startFOV, m_endFOV, m_cameraZoomOnLaunch.Evaluate(m_currentLerpTime));
+        transform.position = Vector3.Lerp(m_startPosition, m_endPosition, m_movementCurveSpeed.Evaluate(m_currentLerpTime));
         
-        if (IsPositionsNear(gameObject.transform.position, m_positionToExplode, 0.01f))
+        if (IsPositionsNear(gameObject.transform.position, m_endPosition, 0.01f))
         {
-            StartGame();
+            transitionEndCallback();
         }
     }
 
-    public void ReplaceAtBeginning()
+    public void SetMoveUpTransitionValues()
     {
-        transform.position = m_positionTobegin;
+        m_currentLerpTime = 0.0f;
+        m_startLerpTime = Time.time;
+        m_lerpDuration = m_timeToMoveUp;
+
+        m_startPosition = m_startPositionAtLaunchMoveUp;
+        m_endPosition = m_endPositionAtLaunchMoveUp;
+
+        m_movementCurveSpeed = m_speedOnLaunchMoveUp;
+
+        transform.position = m_startPositionAtLaunchMoveUp;
+
+        transitionEndCallback = StartGame;
+    }
+
+    public void SetMoveDownTransitionValues()
+    {
+        m_currentLerpTime = 0.0f;
+        m_startLerpTime = Time.time;
+        m_lerpDuration = m_timeToMoveDown;
+        
+        m_startPosition = m_startPositionAtLaunchMoveDown;
+        m_endPosition = m_endPositionAtLaunchMoveDown;
+
+        m_movementCurveSpeed = m_speedOnLaunchMoveDown;
+
+        transform.position = m_startPositionAtLaunchMoveDown;
+
+        transitionEndCallback = GameManager.Instance.StartNextLevel;
     }
 
     private void StartGame()
@@ -71,7 +92,7 @@ public class InitialLaunch : MonoBehaviour
         // Stop the firework launcher
         m_rigidbody.velocity = Vector3.zero;
         
-        foreach (var player in m_players)
+        foreach (var player in GameManager.Instance.Players)
         {
             // Enable the movement of the player
             player.GetComponent<PlayerControls>().EnableMovementControls(true);

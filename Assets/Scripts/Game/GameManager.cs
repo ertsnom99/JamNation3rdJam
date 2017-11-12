@@ -35,6 +35,18 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Start()
     {
+        foreach (GameObject player in Players)
+        {
+            // Diseable the movement of the player
+            player.GetComponent<PlayerControls>().EnableMovementControls(false);
+
+            // Disable all particule system
+            player.GetComponent<Firework>().enabledParticuleSystem(false);
+
+            // Replace the player at his starting point
+            player.GetComponent<PlayerMovement>().ReplaceAtBeginning();
+        }
+
         StartNextLevel();
     }
 
@@ -43,14 +55,26 @@ public class GameManager : MonoSingleton<GameManager>
         if (currentLevelIndex != 0)
         {
             InitialLaunch.ReplaceAtBeginning();
-            Destroy(CurrentLevel);
-        }
+            InitialLaunch.EnableParticleEmission(true);
 
-        foreach(GameObject player in Players)
-        {
-            player.GetComponent<PlayerControls>().EnableMovementControls(false);
+            Destroy(CurrentLevel.gameObject);
         }
 
         CurrentLevel = Instantiate(levels[currentLevelIndex]);
+        currentLevelIndex++;
+    }
+
+    public void StartNextLevelTest()
+    {
+        if (currentLevelIndex != 0)
+        {
+            InitialLaunch.ReplaceAtBeginning();
+            InitialLaunch.EnableParticleEmission(true);
+
+            Destroy(CurrentLevel.gameObject);
+        }
+        
+        CurrentLevel = Instantiate(levels[currentLevelIndex]);
+        //currentLevelIndex++;
     }
 }

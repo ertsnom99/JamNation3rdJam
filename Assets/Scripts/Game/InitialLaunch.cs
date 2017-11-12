@@ -14,31 +14,36 @@ public class InitialLaunch : MonoBehaviour
     public AnimationCurve m_cameraZoomOnLaunch;
     public AnimationCurve m_fireworkSpeedOnLaunch;
 
+    private ParticleSystem[] m_particleSystems;
     private Rigidbody m_rigidbody;
     private Camera m_currentCamera;
 
     // Camera
     public float m_startFOV;
     public float m_endFOV;
-    Vector3 m_camStartPosition;
 
     // Firework
     Vector3 m_startPosition;
     float m_currentLerpTime;
     float m_startLerpTime;
 
+    private void OnEnable()
+    {
+        m_currentLerpTime = 0.0f;
+        m_startLerpTime = Time.time;
+    }
+
     private void Awake()
     {
+        m_particleSystems = GetComponentsInChildren<ParticleSystem>();
         m_rigidbody = GetComponent<Rigidbody>();
         m_currentCamera = GetComponentInChildren<Camera>();
     }
+
     // Use this for initialization
     void Start()
     {
         m_startPosition = transform.position;
-        m_camStartPosition = m_currentCamera.transform.position;
-        m_currentLerpTime = 0.0f;
-        m_startLerpTime = Time.time;
     }
 
     // Update is called once per frame
@@ -57,6 +62,7 @@ public class InitialLaunch : MonoBehaviour
 
     public void ReplaceAtBeginning()
     {
+        Debug.Log(m_positionTobegin);
         transform.position = m_positionTobegin;
     }
 
@@ -64,27 +70,40 @@ public class InitialLaunch : MonoBehaviour
     {
         // Stop the firework launcher
         m_rigidbody.velocity = Vector3.zero;
-
-        // Activate every player
+        
         foreach (var player in m_players)
         {
-            player.SetActive(true);
+            // Enable the movement of the player
             player.GetComponent<PlayerControls>().EnableMovementControls(true);
+
+            // Enable all particule system
+            player.GetComponent<Firework>().enabledParticuleSystem(true);
         }
 
-        // Hide firework launcher
-        GetComponent<Renderer>().enabled = false;
-
-        ParticleSystem[] particleSystems = GetComponentsInChildren<ParticleSystem>();
-
-        foreach(ParticleSystem particleSystem in particleSystems)
-        {
-            particleSystem.Stop();
-        }
+        // Stop all particule system
+        EnableParticleEmission(false);
 
         GameManager.Instance.CurrentLevel.StartLevelTimer();
 
         enabled = false;
+    }
+
+    public void EnableParticleEmission(bool enable)
+    {
+        foreach (ParticleSystem particleSystem in m_particleSystems)
+        {
+            if (particleSystem.main.loop)
+            {
+                if (enable)
+                {
+                    particleSystem.Play();
+                }
+                else
+                {
+                    particleSystem.Stop();
+                }
+            }
+        }
     }
 
     private bool IsPositionsNear(Vector3 p1, Vector3 p2, float threshold)

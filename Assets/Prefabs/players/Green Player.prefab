@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 33431535495649042}
   - component: {fileID: 135453455976045284}
   - component: {fileID: 23722567038090254}
+  - component: {fileID: 114221338936742314}
   - component: {fileID: 114222095527210684}
   - component: {fileID: 114724460314668190}
   - component: {fileID: 114487533309152422}
@@ -258,6 +259,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114221338936742314
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1394503937096792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2a2f89dc8d0974ea291f75c513f677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireworkColor: 1
 --- !u!114 &114222095527210684
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -3902,7 +3902,7 @@ GameObject:
   - component: {fileID: 4559426872575452}
   - component: {fileID: 114794844489434510}
   m_Layer: 0
-  m_Name: Level_01
+  m_Name: Level_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14480,7 +14480,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76423a2e17f6e2a4798b7bc4f4a1621f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 5
+  time: 3
+  maxCurveNotFollowedDistance: 5
   paths:
   - {fileID: 114206736897900716}
   - {fileID: 114076715694134222}

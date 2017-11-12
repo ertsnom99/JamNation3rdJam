@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Vector3 m_positionTobegin;
     public Vector3 m_initialDirection;
+
     public float m_currentSpeed;
     public float m_thresholdUpdate;
 
@@ -68,6 +70,11 @@ public class PlayerMovement : MonoBehaviour
     public static void DebugVector(Vector2 vec)
     {
         Debug.Log(string.Format("{0}, {1}", vec.x, vec.y));
+    }
+
+    public void ReplaceAtBeginning()
+    {
+        transform.position = m_positionTobegin;
     }
 
     public void SaveCurrentNotFollowingCurveDistance()

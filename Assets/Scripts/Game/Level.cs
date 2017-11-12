@@ -5,6 +5,8 @@ public class Level : MonoBehaviour
 {
     [SerializeField]
     private float time = 5.0f;
+    [SerializeField]
+    private float maxCurveNotFollowedDistance = 15.0f;
 
     [SerializeField]
     private Path[] paths;
@@ -34,14 +36,33 @@ public class Level : MonoBehaviour
 
     private void EndLevel()
     {
-        // Tell all player to stop moving and check if anyplayer falled to reproduce the curve
         for (int i = 0; i < GameManager.Instance.Players.Length; i++)
         {
             PlayerMovement playerMovement = GameManager.Instance.Players[i].GetComponent<PlayerMovement>();
 
+            // Make shure to check if the current not following curve distance is the new max distance
             playerMovement.SaveCurrentNotFollowingCurveDistance();
-
-            Debug.Log(GameManager.Instance.Players[i].name  + ": " + playerMovement.NotFollowingCurveMaxDistance);
+//Debug.Log(GameManager.Instance.Players[i].name  + ": " + playerMovement.NotFollowingCurveMaxDistance);
+            // Check if a player falled
+            if (playerMovement.NotFollowingCurveMaxDistance > maxCurveNotFollowedDistance)
+            {
+Debug.Log("YOU LOST!!!");
+                return;
+            }
         }
+
+        foreach (GameObject player in GameManager.Instance.Players)
+        {
+            // Diseable the movement of the player
+            player.GetComponent<PlayerControls>().EnableMovementControls(false);
+
+            // Disable all particule system
+            player.GetComponent<Firework>().enabledParticuleSystem(false);
+
+            // Replace the player at his starting point
+            player.GetComponent<PlayerMovement>().ReplaceAtBeginning();
+        }
+
+        GameManager.Instance.StartNextLevelTest();
     }
 }

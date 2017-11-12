@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 33111994262806750}
   - component: {fileID: 135442357614768054}
   - component: {fileID: 23277050416926772}
+  - component: {fileID: 114606243633653594}
   - component: {fileID: 114487027673326650}
   - component: {fileID: 114581487254995382}
   - component: {fileID: 114756781197177104}
@@ -296,6 +297,18 @@ MonoBehaviour:
   m_initialDirection: {x: -1, y: 0, z: 0}
   m_currentSpeed: 1
   m_thresholdUpdate: 0.1
+--- !u!114 &114606243633653594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1969723856695924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2a2f89dc8d0974ea291f75c513f677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireworkColor: 3
 --- !u!114 &114756781197177104
 MonoBehaviour:
   m_ObjectHideFlags: 1

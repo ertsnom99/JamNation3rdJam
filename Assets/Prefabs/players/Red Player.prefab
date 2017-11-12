@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 33283344328293650}
   - component: {fileID: 135143958653170768}
   - component: {fileID: 23782294643797356}
+  - component: {fileID: 114384132106282672}
   - component: {fileID: 114550944093739258}
   - component: {fileID: 114421249384161434}
   - component: {fileID: 114736460010895474}
@@ -270,6 +271,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_burstEmitter: {fileID: 0}
+--- !u!114 &114384132106282672
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1507615611986238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2a2f89dc8d0974ea291f75c513f677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireworkColor: 2
 --- !u!114 &114421249384161434
 MonoBehaviour:
   m_ObjectHideFlags: 1
